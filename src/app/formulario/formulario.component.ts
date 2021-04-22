@@ -48,10 +48,36 @@ export class FormularioComponent implements OnInit {
     }
 
     //validacion numero
+
+    let cont:number = 0;
+    let j:number = 0;
+    if (this.formulario.value.telefono.length == 12) {
+      for (let i of this.formulario.value.telefono) {
+        if (i == "-" && (j==3 || j==7)) {
+          
+          cont += 1;
+          
+        }
+        j += 1
+      }
+      if (cont == 2) {
+        console.log("Teléfono Válido");
+        validaciones +=1      
+      }
+      else{
+        console.log("Teléfono No Válido");
+      }
+    }
+
+    else{
+      console.log("Teléfono No Válido");
+    }
+
+
   
 
     console.log(validaciones);
-    if(validaciones == 2){
+    if(validaciones == 3){
       validado= true;
     }
     if (validado){
